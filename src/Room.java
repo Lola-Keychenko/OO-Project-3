@@ -11,7 +11,8 @@ public class Room {
     private boolean hasSeeker;
     private boolean hasBlinker;
     private int room;
-    private ArrayList<Room> adjacentRooms = new ArrayList<Room>();
+
+    public ArrayList<Treasure> treasures = new ArrayList<Treasure>(); //arraylist of treasures in rooms
 
 
     // THIS IS ALSO A GOOD EXAMPLE OF ENCAPSULATION
@@ -59,10 +60,6 @@ public class Room {
         return hasThief;
     }
 
-    public ArrayList<Room> getAdjacentRooms() {
-        return adjacentRooms;
-    }
-
     public void setHasBrawler(boolean hasBrawler) {
         this.hasBrawler = hasBrawler;
     }
@@ -94,10 +91,5 @@ public class Room {
     public void setRoom(int room) {
 
         this.room = room;
-    }
-
-    public void addAdjacentRooms(Room newRoom) {
-
-        adjacentRooms.add(newRoom);
     }
 }

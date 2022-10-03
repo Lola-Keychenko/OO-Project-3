@@ -4,5 +4,5 @@ public class Potion extends Treasure{
         type = "Potion";
     }
 
-    //will allow an adventurer to take an additional point of damage befoe being eliminated
+    //will allow an adventurer to take an additional point of damage before being eliminated
 }

@@ -1,11 +1,12 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Adventurer{
     private Room myAdvRoom;
-    private int treasure;
+
+    private ArrayList<Treasure> treasures = new ArrayList<Treasure>();
     private int damage;
     public Adventurer(){
-        treasure = 0;
         damage = 0;
         // All initialized Adventurers start in room number 011
         Room newRoom = new Room(011);
@@ -13,7 +14,6 @@ public class Adventurer{
     }
     //Overload for when instantiating adventurer with a room already assigned
     public Adventurer(Room myRoom){
-        treasure = getTreasure();
         damage = getDamage();
         myAdvRoom = myRoom;
     }
@@ -26,12 +26,36 @@ public class Adventurer{
         return intRandom;
     }
 
+    //Method to compare treasure arraylists with room to see if adv already has a treasure
+    public void compareTreasures(ArrayList<Treasure> roomTreasures){
+        //takes all treasures from rooms arraylist that the adv does not already have
+        //use index of to check, returns -1 if there is no instance of it
+        boolean hasTreasureType = false;
+
+        //loop through all objects in roomTreasures array
+        for(int i = 0; i < roomTreasures.size(); i++){
+            //loop through all objs in adv treasures array
+            for(int j = 0; j < treasures.size(); j++){
+                //if the treasure object is the same type as any in adv array
+                if(roomTreasures.get(i).getType() == treasures.get(j).getType()){
+                    hasTreasureType = true;
+                    break;
+                }
+            }
+            if(hasTreasureType == false){
+                //add treasure to adv arraylist
+                treasures.add(roomTreasures.get(i));
+                //remove treasure from rooms arraylist
+                roomTreasures.remove(roomTreasures.get(i));
+                //set the index of i back one
+                i--;
+            }
+        }
+    }
+
     // Getters
     public Room getMyRoom(){
         return myAdvRoom;
-    }
-    public int getTreasure(){
-        return treasure;
     }
     public int getDamage(){
         return damage;
@@ -42,27 +66,9 @@ public class Adventurer{
         this.myAdvRoom = myRoom;
     }
 
-    public void setTreasure(int treasure) {
-        this.treasure = treasure;
-    }
-
     public void setDamage(int damage) {
         this.damage = damage;
     }
-    
-    // Search for treasure
-    public boolean isTreasure(){
-        Random rand = new Random();
-        int rand1 = rand.nextInt(6) + 1;
-        int rand2 = rand.nextInt(6) + 1;
-        int intRandom = rand1 + rand2;
-        if(intRandom > 9){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
 
     // Finds what position the adventurer is in 
     public int setNewRoom(int currentRoom){
