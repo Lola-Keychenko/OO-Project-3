@@ -23,6 +23,116 @@ public class GameEngine {
         adventureList.add(th);
     }
 
+    //METHODS TO INITALIZE TREASURES
+    //24 Treasure objects will now be randomly placed in Rooms at the start of the simulation (4 of each of 6 subtypes)
+    public void makeTreasures(){
+        //create 4 of each of type of treasure
+        Sword s1 = new Sword();
+        Room myRoom = findRoomForTreasure();
+        myRoom.treasures.add(s1);
+
+        Sword s2 = new Sword();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(s2);
+
+        Sword s3 = new Sword();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(s3);
+
+        Sword s4 = new Sword();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(s4);
+
+        Gem g1 = new Gem();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(g1);
+
+        Gem g2 = new Gem();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(g2);
+
+        Gem g3 = new Gem();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(g3);
+
+        Gem g4 = new Gem();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(g4);
+
+        Armor a1 = new Armor();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(a1);
+
+        Armor a2 = new Armor();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(a2);
+
+        Armor a3 = new Armor();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(a3);
+
+        Armor a4 = new Armor();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(a4);
+
+        Portal p1 = new Portal();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(p1);
+
+        Portal p2 = new Portal();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(p2);
+
+        Portal p3 = new Portal();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(p3);
+
+        Portal p4 = new Portal();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(p4);
+
+        Trap t1 = new Trap();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(t1);
+
+        Trap t2 = new Trap();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(t2);
+
+        Trap t3 = new Trap();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(t3);
+
+        Trap t4 = new Trap();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(t4);
+
+        Potion pot1 = new Potion();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(pot1);
+
+        Potion pot2 = new Potion();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(pot2);
+
+        Potion pot3 = new Potion();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(pot3);
+
+        Potion pot4 = new Potion();
+        myRoom = findRoomForTreasure();
+        myRoom.treasures.add(pot4);
+    }
+
+    //METHOD TO PLACE TREASURES
+    public Room findRoomForTreasure(){
+        // Generate random num 1 - 4 for index of floor
+        Random rand = new Random();
+        int floor = rand.nextInt(1,5);
+        // Generate random num 0 - 8 for index of room
+        int room = rand.nextInt(0,9);
+        return allRooms.get(floor).get(room);
+    }
 
     //Method to Initalize rooms - the index of the arraylist of a floor is the floor number (allRooms.get(0) = arraylist of the zero floor)
     public void initializeRooms() {
