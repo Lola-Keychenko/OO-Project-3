@@ -1,7 +1,5 @@
 public abstract class Behavior {
-    protected String celebration = "Unknown Celebration";
-    public abstract int fight(Room r);
-    public String getCelebration(){
-        return celebration;
-    }
+    public abstract void fight(Room r);
 }
+
+//we can use the same way the book did it and call the actual decorator and pass in an object of the specific fight method
