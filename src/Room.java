@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
-public class Room {
+public class Room implements Subject{
     // ROOM IS A GOOD EXAMPLE OF A COHESIVE CLASS
     // IT IS FOCUSED VERY CLEARLY AND ONLY HAS METHODS AND DATA RELATED TO THE ROOM OBJECT
     private boolean hasBrawler;

@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Adventurer{
-    private Room myAdvRoom;
+public class Adventurer implements Subject{
+    public Room myAdvRoom;
 
-    private ArrayList<Treasure> treasures = new ArrayList<Treasure>();
+    public ArrayList<Treasure> treasures = new ArrayList<Treasure>();
     private int damage;
     public Adventurer(){
         damage = 0;
