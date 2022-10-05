@@ -11,3 +11,4 @@ public class Dance extends celebrationDecorator{
         System.out.println("Dance!");
     }
 }
+

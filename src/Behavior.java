@@ -1,4 +1,5 @@
-public abstract class Behavior {
+
+public abstract class Behavior implements Subject {
     public abstract void fight(Room r);
 }
 
