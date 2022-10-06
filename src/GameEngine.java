@@ -9,12 +9,19 @@ public class GameEngine {
     ArrayList<Orbiter> Orbiters = new ArrayList<Orbiter>();
     ArrayList<Seeker> Seekers = new ArrayList<Seeker>();
     ArrayList<Blinker> Blinkers = new ArrayList<Blinker>();
-    // Creating Adventurers
+
+    // create arraylist of adventurers and assign their combat/search behaviors
     ArrayList<Adventurer> adventureList = new ArrayList<Adventurer>();
-    Brawler brawl = new Brawler();
-    Sneaker sneak = new Sneaker();
-    Runner run = new Runner();
-    Thief th = new Thief();
+
+    Behavior train = new Trained();
+    Behavior untrain = new Untrained();
+    Behavior stealth = new Stealth();
+    Behavior expert = new Expert();
+
+    Brawler brawl = new Brawler(expert);
+    Sneaker sneak = new Sneaker(stealth);
+    Runner run = new Runner(untrain);
+    Thief th = new Thief(train);
 
     public void addAdv() {
         adventureList.add(brawl);
@@ -128,9 +135,9 @@ public class GameEngine {
     public Room findRoomForTreasure(){
         // Generate random num 1 - 4 for index of floor
         Random rand = new Random();
-        int floor = rand.nextInt(1,5);
+        int floor = rand.nextInt(5) + 1;
         // Generate random num 0 - 8 for index of room
-        int room = rand.nextInt(0,9);
+        int room = rand.nextInt(9);
         return allRooms.get(floor).get(room);
     }
 
@@ -397,8 +404,11 @@ public class GameEngine {
         while (game) {
             // Run through turns while end conditions are not met
             // FIRST DISPLAY BOARD
+
             //printGame();
+
             int totalTreasure = 0;
+
             // Then move each adventurer
             for (int i = 0; i < adventureList.size(); i++) {
                 // Move each adventurer
@@ -406,22 +416,23 @@ public class GameEngine {
                 Adventurer a = adventureList.get(i);
                 Room r = a.getMyRoom();
                 int roomNum = r.getRoom();
-                // Take note of what type of creature is in the room
+                // Take note of what type of adventurer is in the room
                 int adventurerType;
-                if(r.isHasRunner()){
+                if(r.isHasRunner()){ // Runner
                     adventurerType = 1;
-                }else if(r.isHasBrawler()){
+                }else if(r.isHasBrawler()){ // Brawler
                     adventurerType = 2;
-                }else if(r.isHasSneaker()){
+                }else if(r.isHasSneaker()){ // Sneaker
                     adventurerType = 3;
                 }else{
-                    adventurerType = 4;
+                    adventurerType = 4; // Thief
                 }
+
                 // Move adventurer to new room, then update new/old room with content based on creature type
                 int newRoomNum = a.setNewRoom(roomNum);
                 Room r1 = new Room(newRoomNum);
                 a.setMyRoom(r1);
-                //Room r1 = a.getMyRoom();
+                // Update the new Room with the adventurer, remove adventurer from old room
                 if(adventurerType == 1){
                     r1.setHasRunner(true);
                     r.setHasRunner(false);
@@ -438,6 +449,7 @@ public class GameEngine {
 
                 // Now check the new room for creatures
                 boolean isCreature = CreatureCheck(r1);
+                // If there is a creature present, then fight
                 if(isCreature){
                     // First figure out what kind of creature is in the room
                     int creatureType;
@@ -448,7 +460,11 @@ public class GameEngine {
                     }else{
                         creatureType = 3; // Orbiter is type 3
                     }
-                    int fightResult = fight(r1);
+
+                    // 0 means tie, 1 means Adventurer win, 2 means Creature win
+                    int fightResult = a.executeStrategy(r1);
+
+
                     if(fightResult == 1){
                         // If the adventurer wins, eliminate the creature
                         if(creatureType == 1) {
@@ -562,66 +578,6 @@ public class GameEngine {
         }
     }
 
-    // Method for all fights
-    // return 1 if adventurer win
-    // return 2 if creature win
-    // return 3 if tie
-    public int fight(Room r) {
-        // Rolls for creature and adventurer are taken at the beginning
-        Random rand = new Random();
-        int aRand1 = rand.nextInt(6) + 1;
-        int aRand2 = rand.nextInt(6) + 1;
-        int cRand1 = rand.nextInt(6) + 1;
-        int cRand2 = rand.nextInt(6) + 1;
-        int aRoll = aRand1 + aRand2;
-        int cRoll = cRand1 + cRand2;
-        if (r.isHasBrawler()) {
-            // Brawler fight
-            Brawler b = new Brawler();
-            int finalScore = b.Special(aRoll);
-            if (finalScore > cRoll) {  // Adventurer win
-                return 1;
-            } else if (cRoll > finalScore) { // Creature win
-                return 2;
-            } else { // Tie
-                return 3;
-            }
-        } else if (r.isHasSneaker()) {
-            // Sneaker fight
-            Sneaker s = new Sneaker();
-            if (s.Special()) {
-                if (aRoll > cRoll) {
-                    return 1;
-                } else if (cRoll > aRoll) {
-                    return 2;
-                } else {
-                    return 3;
-                }
-            }
-
-        } else if (r.isHasRunner()) {
-            // Runner fight
-            if (aRoll > cRoll) {
-                return 1;
-            } else if (cRoll > aRoll) {
-                return 2;
-            } else {
-                return 3;
-            }
-        } else {
-            // Thief fight
-            Thief t = new Thief();
-            int newTScore = t.fightSpecial(aRoll);
-            if (newTScore > cRoll) {
-                return 1;
-            } else if (cRoll > newTScore) {
-                return 2;
-            } else {
-                return 3;
-            }
-        }
-        return 0;
-    }
 
     public void printGame() {
         //print all of the Adventurers
