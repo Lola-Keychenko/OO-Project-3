@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
-public class Room implements Subject{
+
+/* WHAT INFORMATION AM I PUBLISHING HERE?
+    - ADV/CREATURE ENTERS ROOM
+ */
+
+public class Room extends Subject{
     // ROOM IS A GOOD EXAMPLE OF A COHESIVE CLASS
     // IT IS FOCUSED VERY CLEARLY AND ONLY HAS METHODS AND DATA RELATED TO THE ROOM OBJECT
     private boolean hasBrawler;
@@ -92,4 +97,7 @@ public class Room implements Subject{
 
         this.room = room;
     }
+
+    //PUBLISHER METHODS
+
 }

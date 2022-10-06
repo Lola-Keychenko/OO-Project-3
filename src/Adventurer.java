@@ -1,9 +1,12 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Adventurer implements Subject{
-    public Room myAdvRoom;
+/*PUBLISHING
+- TREASURE TAKEN FROM ROOM BY AN ADVENTURER
+ */
 
+public class Adventurer extends Subject{
+    public Room myAdvRoom;
     public ArrayList<Treasure> treasures = new ArrayList<Treasure>();
     private int damage;
     public Adventurer(){
@@ -17,6 +20,7 @@ public class Adventurer implements Subject{
         damage = getDamage();
         myAdvRoom = myRoom;
     }
+
 
     public int Roll(){
         Random rand = new Random();
