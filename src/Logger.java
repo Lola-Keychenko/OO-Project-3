@@ -41,6 +41,8 @@ public class Logger implements Observer{
         String toLog = "";
         String txtFileName = "C:\\src\\logger-"+turn+".txt";
 
+        System.out.println("Update in Logger was called");
+
         if(current.getAdvRoom() != null){
             toLog = current.getName()+" has entered room "+current.getAdvRoom();
         } else if(current.getAdvDamage() != -1){

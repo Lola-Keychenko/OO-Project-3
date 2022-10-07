@@ -6,9 +6,10 @@ public class Dance extends celebrationDecorator{
         //pass the behavior we are wrapping to the decorators constructor
     }
 
-    public void fight(Room r){
+    public int fight(Room r){
         //do extended behavior
         System.out.println("Dance!");
+        return 1;
     }
 }
 

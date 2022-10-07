@@ -80,8 +80,8 @@ public class Adventurer extends Subject{
     }
 
     public void setDamage(int damage) {
-        publish();
         this.damage = damage;
+        publish();
     }
 
     // Finds what position the adventurer is in 
