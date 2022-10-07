@@ -13,15 +13,20 @@ public class GameEngine {
     // create arraylist of adventurers and assign their combat/search behaviors
     ArrayList<Adventurer> adventureList = new ArrayList<Adventurer>();
 
+    // THIS IS AN EXAMPLE OF THE STRATEGY PATTERN - SEE IMPLEMENTATIONS FOR MORE DETAILS
+
     Behavior train = new Trained();
     Behavior untrain = new Untrained();
     Behavior stealth = new Stealth();
     Behavior expert = new Expert();
+    SearchBehavior careful = new Careful();
+    SearchBehavior quick = new Quick();
+    SearchBehavior careless = new Careless();
 
-    Brawler brawl = new Brawler(expert);
-    Sneaker sneak = new Sneaker(stealth);
-    Runner run = new Runner(untrain);
-    Thief th = new Thief(train);
+    Brawler brawl = new Brawler(expert, careless);
+    Sneaker sneak = new Sneaker(stealth, quick);
+    Runner run = new Runner(untrain, quick);
+    Thief th = new Thief(train, careful);
 
     public void addAdv() {
         adventureList.add(brawl);
@@ -401,24 +406,15 @@ public class GameEngine {
 
         int creaturesEliminated = 0;
         int adventurersEliminated = 0;
+        int totalTreasure = 0;
+
         while (game) {
             // Run through turns while end conditions are not met
             // FIRST DISPLAY BOARD
-
-            //printGame();
-
-            int totalTreasure = 0;
-
-            // Then move each adventurer
-            /*
-            TODO: Unroll the adventurer loop, make each move specific to adventurer type
-            a.executeBehavior will NOT work for a Adventurer, only for t Thief or s Sneaker
-
-             */
+            // printGame();
             // Move each adventurer one by one
 
             // START WITH RUNNER
-
             if(adventureList.contains(run)){ // if the adventurer is still alive, move it
                 Room runRoom = run.getMyRoom();
                 int runRoomNum = runRoom.getRoom();
@@ -466,6 +462,15 @@ public class GameEngine {
                         run.setDamage(run.getDamage() + 1);
                     }
                     // Search for Treasure
+                    if(runRoom1.treasures != null){
+                        // If there is a treasure in the room, search and see if it can be picked up
+                        boolean isTreasure = run.executeSearchStrategy(runRoom1);
+                        if(isTreasure){
+                            // If the search is successful, see which treasure can be picked up
+                            run.compareTreasures(runRoom1.treasures);
+                        }
+                    }
+
                 }
             }
 
@@ -651,7 +656,6 @@ public class GameEngine {
             // Check for adventurer deaths,  get total treasure
             for (int i = 0; i < adventureList.size(); i++) {
                 Adventurer a = adventureList.get(i);
-                totalTreasure += a.getTreasure();
                 Room r = a.getMyRoom();
                 boolean dead = false;
                 if(a.getDamage() == 3){
@@ -709,10 +713,22 @@ public class GameEngine {
 
     public void printGame() {
         //print all of the Adventurers
-        System.out.println("Brawler - "+brawl.getTreasure()+" Treasures - "+brawl.getDamage()+" Damage");
-        System.out.println("Sneaker - "+sneak.getTreasure()+" Treasures - "+sneak.getDamage()+" Damage");
-        System.out.println("Runner - "+run.getTreasure()+" Treasures - "+run.getDamage()+" Damage");
-        System.out.println("Thief - "+th.getTreasure()+" Treasures - "+th.getDamage()+" Damage");
+        System.out.printf("Brawler - ");
+        brawl.getTreasure();
+        System.out.printf(" Treasures - ", brawl.getDamage(), " Damage");
+        System.out.println(" ");
+        System.out.printf("Sneaker - ");
+        sneak.getTreasure();
+        System.out.printf(" Treasures - ", sneak.getDamage(), " Damage");
+        System.out.println(" ");
+        System.out.printf("Thief - ");
+        th.getTreasure();
+        System.out.printf(" Treasures - ", th.getDamage(), " Damage");
+        System.out.println(" ");
+        System.out.printf("Runner - ");
+        run.getTreasure();
+        System.out.printf(" Treasures - ", run.getDamage(), " Damage");
+        System.out.println(" ");
 
         //print all of the creatures
         System.out.println("Orbiters - "+Orbiters.size()+" Remaining");

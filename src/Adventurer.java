@@ -19,7 +19,9 @@ public class Adventurer{
         damage = getDamage();
         myAdvRoom = myRoom;
     }
-
+    public ArrayList<Treasure> getTreasures(){
+        return treasures;
+    }
     public int Roll(){
         Random rand = new Random();
         int rand1 = rand.nextInt(6) + 1;
@@ -27,7 +29,11 @@ public class Adventurer{
         int intRandom = rand1 + rand2;
         return intRandom;
     }
-
+    public void getTreasure(){
+        for(int i = 0; i < treasures.size(); i++){
+            System.out.printf(" ", treasures.get(i), " ");
+        }
+    }
     //Method to compare treasure arraylists with room to see if adv already has a treasure
     public void compareTreasures(ArrayList<Treasure> roomTreasures){
         //takes all treasures from rooms arraylist that the adv does not already have
