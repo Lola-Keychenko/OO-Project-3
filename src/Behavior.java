@@ -1,6 +1,6 @@
 
-public abstract class Behavior extends Subject {
-    public abstract void fight(Room r);
+public interface Behavior implements Subject {
+    int fight(Room r);
 }
 
 
