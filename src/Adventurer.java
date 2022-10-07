@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-/*PUBLISHING
-- TREASURE TAKEN FROM ROOM BY AN ADVENTURER
- */
-
 public class Adventurer extends Subject{
+    private Room myAdvRoom;
+    private ArrayList<Treasure> treasures = new ArrayList<Treasure>();
+    private int damage;
+    Behavior behavior;
 
     public void publish(){
         Message myMess = new Message();
