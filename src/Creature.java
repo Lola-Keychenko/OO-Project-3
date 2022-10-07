@@ -38,10 +38,14 @@ public class Creature extends Subject{
     //setters
     //Command+N creates getters and setters faster
     public void setMyRoom(Room myRoom) {
+
         this.myRoom = myRoom;
+        publish();
     }
 
     public void setDamage(int damage) {
+
         this.damage = damage;
+        publish();
     }
 }

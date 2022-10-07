@@ -2,29 +2,17 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Adventurer extends Subject{
-    private Room myAdvRoom;
-    private ArrayList<Treasure> treasures = new ArrayList<Treasure>();
-    private int damage;
+    protected Room myAdvRoom;
+    protected ArrayList<Treasure> treasures = new ArrayList<Treasure>();
+    protected int damage;
     Behavior behavior;
 
-    public void publish(){
-        Message myMess = new Message();
-        myMess.setAdvRoom(Integer.toString(myAdvRoom.getRoom()));
-        myMess.setAdvTreas(treasures);
-        myMess.setName(name);
-        notifyObserver(myMess);
-    }
-    public Room myAdvRoom;
-    public ArrayList<Treasure> treasures = new ArrayList<Treasure>();
-    private int damage;
 
-    public String name;
-    public Adventurer(String myName){
+    public Adventurer(){
         damage = 0;
         // All initialized Adventurers start in room number 011
         Room newRoom = new Room(011);
         myAdvRoom = newRoom;
-        name = myName;
     }
 
     //Overload for when instantiating adventurer with a room already assigned
@@ -33,6 +21,12 @@ public class Adventurer extends Subject{
         myAdvRoom = myRoom;
     }
 
+    public void publish(){
+        Message myMess = new Message();
+        myMess.setAdvRoom(Integer.toString(myAdvRoom.getRoom()));
+        myMess.setAdvTreas(treasures);
+        notifyObserver(myMess);
+    }
 
     public int Roll(){
         Random rand = new Random();
@@ -67,6 +61,8 @@ public class Adventurer extends Subject{
                 i--;
             }
         }
+
+        publish();
     }
 
     // Getters
@@ -80,9 +76,11 @@ public class Adventurer extends Subject{
     // Setters
     public void setMyRoom(Room myRoom) {
         this.myAdvRoom = myRoom;
+        publish();
     }
 
     public void setDamage(int damage) {
+        publish();
         this.damage = damage;
     }
 

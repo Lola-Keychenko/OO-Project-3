@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Untrained implements Behavior{
+public class Untrained extends Behavior {
     //Untrained - no special here - just a regular fight
     public int fight(Room r){
         Random rand = new Random();
