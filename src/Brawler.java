@@ -1,7 +1,14 @@
 public class Brawler extends Adventurer {
-    //Brawlers get +2 to dice rolls when fighting a creature
-    public int Special(int currentScore){
-        return currentScore+2;
+
+    // This counts as the Context Class ??
+
+    public Behavior brawlBehavior;
+
+    public Brawler(Behavior myBehavior){
+        this.brawlBehavior = myBehavior;
     }
 
+    public int executeStrategy(Room r1){
+        return brawlBehavior.fight(r1);
+    }
 }

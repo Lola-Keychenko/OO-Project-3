@@ -26,6 +26,7 @@ public class Adventurer extends Subject{
         myAdvRoom = newRoom;
         name = myName;
     }
+
     //Overload for when instantiating adventurer with a room already assigned
     public Adventurer(Room myRoom){
         damage = getDamage();
@@ -224,4 +225,5 @@ public class Adventurer extends Subject{
         }
         return 0;
     }
+
 }

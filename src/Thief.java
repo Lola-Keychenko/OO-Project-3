@@ -1,9 +1,14 @@
 public class Thief extends Adventurer{
-    public int fightSpecial(int score){
-        return score + 1;
+    // This counts as the Context Class ??
+
+    public Behavior thBehavior;
+
+    public Thief(Behavior myBehavior){
+        this.thBehavior = myBehavior;
     }
-    public int treasureSpecial(int t){
-        return t + 1;
+
+    public int executeStrategy(Room r1){
+        return thBehavior.fight(r1);
     }
 
 
