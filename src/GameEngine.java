@@ -2,7 +2,7 @@ import java.util.Random;
 import java.util.*;
 import java.util.ArrayList;
 
-public class GameEngine {
+public class GameEngine extends Subject{
 
     //Arraylist Rooms, Creatures, Adventurers
     ArrayList<ArrayList<Room>> allRooms = new ArrayList<ArrayList<Room>>();
@@ -15,6 +15,13 @@ public class GameEngine {
     Sneaker sneak = new Sneaker();
     Runner run = new Runner();
     Thief th = new Thief();
+
+    //GETTERS
+
+
+    public ArrayList<Adventurer> getAdventureList() {
+        return adventureList;
+    }
 
     public void addAdv() {
         adventureList.add(brawl);
