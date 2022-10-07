@@ -5,4 +5,6 @@ public class Thief extends Adventurer{
     public int treasureSpecial(int t){
         return t + 1;
     }
+
+
 }
