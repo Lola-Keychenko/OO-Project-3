@@ -3,6 +3,7 @@ public class Brawler extends Adventurer {
     // This counts as the Context Class ??
 
     public Behavior brawlBehavior;
+    public SearchBehavior searchBrawlBehavior;
 
     protected String name = "Brawler";
     public SearchBehavior searchBrawlBehavior;

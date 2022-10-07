@@ -2,6 +2,7 @@ public class Thief extends Adventurer{
     // This counts as the Context Class ??
 
     public Behavior thBehavior;
+    public SearchBehavior searchthBehavior;
 
     protected String name = "Thief";
     public SearchBehavior searchthBehavior;
@@ -17,6 +18,7 @@ public class Thief extends Adventurer{
     public boolean executeSearchBehavior(Room r1){
         return searchthBehavior.search(r1);
     }
+
 
     public void publish(){
         Message myMess = new Message();

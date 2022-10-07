@@ -2,13 +2,22 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Adventurer extends Subject{
+
     protected Room myAdvRoom;
     protected ArrayList<Treasure> treasures = new ArrayList<Treasure>();
     protected int damage;
     Behavior behavior;
 
 
+    public String name;
     public Adventurer(){
+        damage = 0;
+        // All initialized Adventurers start in room number 011
+        Room newRoom = new Room(011);
+        myAdvRoom = newRoom;
+    }
+    public Adventurer(String myName){
+
         damage = 0;
         // All initialized Adventurers start in room number 011
         Room newRoom = new Room(011);
@@ -21,11 +30,16 @@ public class Adventurer extends Subject{
         myAdvRoom = myRoom;
     }
 
+    public ArrayList<Treasure> getTreasures(){
+        return treasures;
+    }
+    
     public void publish(){
         Message myMess = new Message();
         myMess.setAdvRoom(Integer.toString(myAdvRoom.getRoom()));
         myMess.setAdvTreas(treasures);
         notifyObserver(myMess);
+
     }
 
     public int Roll(){
@@ -35,7 +49,11 @@ public class Adventurer extends Subject{
         int intRandom = rand1 + rand2;
         return intRandom;
     }
-
+    public void getTreasure(){
+        for(int i = 0; i < treasures.size(); i++){
+            System.out.printf(" ", treasures.get(i), " ");
+        }
+    }
     //Method to compare treasure arraylists with room to see if adv already has a treasure
     public void compareTreasures(ArrayList<Treasure> roomTreasures){
         //takes all treasures from rooms arraylist that the adv does not already have

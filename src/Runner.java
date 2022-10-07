@@ -4,7 +4,9 @@ public class Runner extends Adventurer{
     // This counts as the Context Class ??
 
     public Behavior runBehavior;
+
     protected String name = "Runner";
+    
     public SearchBehavior searchRunBehavior;
 
     public Runner(Behavior myBehavior, SearchBehavior mySearchBehavior){

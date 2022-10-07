@@ -721,7 +721,7 @@ public class GameEngine extends Subject{
 
 
     public void printGame() {
-        /*//print all of the Adventurers
+        //print all of the Adventurers
         System.out.printf("Brawler - ");
         brawl.getTreasure();
         System.out.printf(" Treasures - ", brawl.getDamage(), " Damage");
@@ -785,7 +785,7 @@ public class GameEngine extends Subject{
             }
 
             System.out.println(" ");
-        }*/
+        }
 
 
     }

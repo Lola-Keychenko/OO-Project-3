@@ -3,7 +3,9 @@ public class Sneaker extends Adventurer{
     // This counts as the Context Class ??
 
     public Behavior sneakBehavior;
+
     protected String name = "Sneaker";
+
     public SearchBehavior searchSneakBehavior;
 
     public Sneaker(Behavior myBehavior, SearchBehavior mySearchBehavior){
