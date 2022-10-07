@@ -410,6 +410,7 @@ public class GameEngine extends Subject{
         // These will determine when to end the game, conditions checked at end of while loop
         boolean game = true;
 
+        System.out.println("Starting to run game");
 
         int creaturesEliminated = 0;
         int adventurersEliminated = 0;
@@ -420,6 +421,7 @@ public class GameEngine extends Subject{
             // FIRST DISPLAY BOARD
             // printGame();
             // Move each adventurer one by one
+            Logger myLog = new Logger("1");
 
             // START WITH RUNNER
             if(adventureList.contains(run)){ // if the adventurer is still alive, move it
@@ -719,7 +721,7 @@ public class GameEngine extends Subject{
 
 
     public void printGame() {
-        //print all of the Adventurers
+        /*//print all of the Adventurers
         System.out.printf("Brawler - ");
         brawl.getTreasure();
         System.out.printf(" Treasures - ", brawl.getDamage(), " Damage");
@@ -783,7 +785,7 @@ public class GameEngine extends Subject{
             }
 
             System.out.println(" ");
-        }
+        }*/
 
 
     }

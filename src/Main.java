@@ -10,6 +10,7 @@ public class Main {
             e.initializeBlinkerObjects();
             e.initializeSeekerObjects();
             e.addAdv();
+            System.out.println("Before Running Game");
             e.runGame();
             System.out.println(" ");
         }
