@@ -15,4 +15,6 @@ public class Thief extends Adventurer{
     public boolean executeSearchBehavior(Room r1){
         return searchthBehavior.search(r1);
     }
+
+
 }
