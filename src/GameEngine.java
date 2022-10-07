@@ -145,9 +145,10 @@ public class GameEngine extends Subject{
 
     //METHOD TO PLACE TREASURES
     public Room findRoomForTreasure(){
-        // Generate random num 1 - 4 for index of floor
+        // Generate random num 2 - 4 for index of floor
         Random rand = new Random();
-        int floor = rand.nextInt(5) + 1;
+        int floor = rand.nextInt(3) + 1;
+        floor = floor * 100;
         // Generate random num 0 - 8 for index of room
         int room = rand.nextInt(9);
         return allRooms.get(floor).get(room);
@@ -407,6 +408,7 @@ public class GameEngine extends Subject{
         sneak.setMyRoom(startingRoom);
         run.setMyRoom(startingRoom);
         th.setMyRoom(startingRoom);
+        //makeTreasures();
         // These will determine when to end the game, conditions checked at end of while loop
         boolean game = true;
 
@@ -417,12 +419,13 @@ public class GameEngine extends Subject{
         int totalTreasure = 0;
 
         while (game) {
+            //System.out.println("TAKING A TURN");
             // Run through turns while end conditions are not met
             // FIRST DISPLAY BOARD
-            // printGame();
+            //printGame();
             // Move each adventurer one by one
             Logger myLog = new Logger("1");
-
+            
             // START WITH RUNNER
             if(adventureList.contains(run)){ // if the adventurer is still alive, move it
                 Room runRoom = run.getMyRoom();
@@ -432,9 +435,9 @@ public class GameEngine extends Subject{
                 run.setMyRoom(runRoom1);
                 runRoom1.setHasRunner(true);
                 runRoom.setHasRunner(false);
-
                 boolean runIsCreature = CreatureCheck(runRoom1);
                 if(runIsCreature){
+                    System.out.println("FIGHT");
                     int runCreatureType;
                     if(runRoom1.isHasBlinker()){
                         runCreatureType = 1;
@@ -469,9 +472,15 @@ public class GameEngine extends Subject{
                     }else if(runFight == 2){
                         // If the creature wins, add one to the adventurer's damage
                         run.setDamage(run.getDamage() + 1);
+                        // Eliminate adventurer if damage is 3
+                        if(run.getDamage() == 3){
+                            runRoom1.setHasRunner(false);
+                            adventurersEliminated++;
+                        }
                     }
                     // Search for Treasure
                     if(runRoom1.treasures != null){
+                        System.out.println("TREASURE");
                         // If there is a treasure in the room, search and see if it can be picked up
                         boolean isTreasure = run.executeSearchStrategy(runRoom1);
                         if(isTreasure){
@@ -497,6 +506,7 @@ public class GameEngine extends Subject{
                 // If there is a creature inside the room, the two will fight
                 boolean brawlIsCreature = CreatureCheck(brawlRoom1);
                 if(brawlIsCreature){
+                    System.out.println("FIght");
                     // Take note of what kind of creature is present in the room
                     int brawlCreatureType;
                     if(brawlRoom1.isHasBlinker()){
@@ -533,8 +543,23 @@ public class GameEngine extends Subject{
                     }else if(brawlFight == 2){
                         // If the creature wins, add one to the adventurer's damage
                         brawl.setDamage(brawl.getDamage() + 1);
+                        // Eliminate adventurer if damage is 3
+                        if(brawl.getDamage() == 3){
+                            brawlRoom1.setHasRunner(false);
+                            adventurersEliminated++;
+                        }
                     }
                     // Search for Treasure
+                    // Search for Treasure
+                    if(brawlRoom1.treasures != null){
+                        System.out.println("TREASURE");
+                        // If there is a treasure in the room, search and see if it can be picked up
+                        boolean isTreasure = brawl.executeSearchStrategy(brawlRoom1);
+                        if(isTreasure){
+                            // If the search is successful, see which treasure can be picked up
+                            brawl.compareTreasures(brawlRoom1.treasures);
+                        }
+                    }
                 }
             }
 
@@ -552,6 +577,7 @@ public class GameEngine extends Subject{
                 // If there is a creature inside the room, the two will fight
                 boolean sneakIsCreature = CreatureCheck(sneakRoom1);
                 if(sneakIsCreature){
+                    System.out.println("Fight");
                     // Take note of what kind of creature is present in the room
                     int sneakCreatureType;
                     if(sneakRoom1.isHasBlinker()){
@@ -588,8 +614,23 @@ public class GameEngine extends Subject{
                     }else if(sneakFight == 2){
                         // If the creature wins, add one to the adventurer's damage
                         sneak.setDamage(sneak.getDamage() + 1);
+                        // Eliminate adventurer if damage is 3
+                        if(sneak.getDamage() == 3){
+                            sneakRoom1.setHasRunner(false);
+                            adventurersEliminated++;
+                        }
                     }
                     // Search for Treasure
+                    // Search for Treasure
+                    if(sneakRoom1.treasures != null){
+                        System.out.println("TREASURE");
+                        // If there is a treasure in the room, search and see if it can be picked up
+                        boolean isTreasure = sneak.executeSearchStrategy(sneakRoom1);
+                        if(isTreasure){
+                            // If the search is successful, see which treasure can be picked up
+                            sneak.compareTreasures(sneakRoom1.treasures);
+                        }
+                    }
                 }
             }
 
@@ -607,6 +648,7 @@ public class GameEngine extends Subject{
                 // If there is a creature inside the room, the two will fight
                 boolean thIsCreature = CreatureCheck(thRoom1);
                 if(thIsCreature){
+                    System.out.println("Fight");
                     // Take note of what kind of creature is present in the room
                     int thCreatureType;
                     if(thRoom1.isHasBlinker()){
@@ -643,8 +685,23 @@ public class GameEngine extends Subject{
                     }else if(thFight == 2){
                         // If the creature wins, add one to the adventurer's damage
                         th.setDamage(th.getDamage() + 1);
+                        // Eliminate adventurer if damage is 3
+                        if(th.getDamage() == 3){
+                            thRoom1.setHasRunner(false);
+                            adventurersEliminated++;
+                        }
                     }
                     // Search for Treasure
+                    // Search for Treasure
+                    if(thRoom1.treasures != null){
+                        System.out.println("TREASURE");
+                        // If there is a treasure in the room, search and see if it can be picked up
+                        boolean isTreasure = th.executeSearchBehavior(thRoom1);
+                        if(isTreasure){
+                            // If the search is successful, see which treasure can be picked up
+                            th.compareTreasures(thRoom1.treasures);
+                        }
+                    }
                 }
             }
 
@@ -662,36 +719,15 @@ public class GameEngine extends Subject{
                 Blinker b = Blinkers.get(j);
                 b.Move(allRooms);
             }
-            // Check for adventurer deaths,  get total treasure
-            for (int i = 0; i < adventureList.size(); i++) {
-                Adventurer a = adventureList.get(i);
-                Room r = a.getMyRoom();
-                boolean dead = false;
-                if(a.getDamage() == 3){
-                    dead = true;
-                }
-                if (r.isHasRunner()) {
-                    // If the damage is 3, remove the runner from the game
-                    if(dead){
-                        r.setHasRunner(false);
-                    }
-                } else if (r.isHasBrawler()) {
-                    if(dead){
-                        r.setHasBrawler(false);
-                    }
-                } else if (r.isHasSneaker()) {
-                    if(dead){
-                        r.setHasSneaker(false);
-                    }
-                } else {
-                    if(dead){
-                        r.setHasThief(false);
-                    }
+            // Check for Win/Loss
+            int totalTreasures = 0;
+            for(int i = 0; i < adventureList.size(); i++){
+                for(int j = 0; j < adventureList.get(i).treasures.size(); j++){
+                    totalTreasures++;
                 }
             }
-            // Check for Win/Loss
-
-            if(totalTreasure >= 10 || creaturesEliminated == 12){
+            //System.out.println(totalTreasures);
+            if(totalTreasures >= 10 || creaturesEliminated == 12){
                 for(int j = 0; j < adventureList.size(); j++){
                     if(adventureList.get(j).getDamage() >= 3){
                         adventurersEliminated++;
@@ -711,8 +747,10 @@ public class GameEngine extends Subject{
     // Helper methods for the game engine include: CreatureCheck, Fight, etc.
     // Returns true if the room has a creature
     public boolean CreatureCheck(Room myAdvRoom) {
+
         // If there is a creature in the room I am in, return true
         if (myAdvRoom.isHasOrbiter() || myAdvRoom.isHasBlinker() || myAdvRoom.isHasSneaker()) {
+            System.out.println("CREATURE PRESENT");
             return true;
         } else {
             return false;

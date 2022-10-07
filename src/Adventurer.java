@@ -56,6 +56,7 @@ public class Adventurer extends Subject{
     }
     //Method to compare treasure arraylists with room to see if adv already has a treasure
     public void compareTreasures(ArrayList<Treasure> roomTreasures){
+        System.out.println("COMPARING TREASURESs");
         //takes all treasures from rooms arraylist that the adv does not already have
         //use index of to check, returns -1 if there is no instance of it
         boolean hasTreasureType = false;
@@ -71,6 +72,7 @@ public class Adventurer extends Subject{
                 }
             }
             if(hasTreasureType == false){
+                System.out.println("ADDING TREASURE");
                 //add treasure to adv arraylist
                 treasures.add(roomTreasures.get(i));
                 //remove treasure from rooms arraylist
@@ -183,7 +185,7 @@ public class Adventurer extends Subject{
                 return currentRoom - 1;
             }
         }else if(currentRoom % 100 == 11){
-            // Center room -> Can move N/S/E/W/U/D
+            // Center room -> Can move N/S/E/W/U
             Random rand = new Random();
             int randomInt = rand.nextInt(6) + 1;
             if(randomInt == 1){ // Move U

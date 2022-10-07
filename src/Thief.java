@@ -5,7 +5,6 @@ public class Thief extends Adventurer{
     public SearchBehavior searchthBehavior;
 
     protected String name = "Thief";
-    public SearchBehavior searchthBehavior;
 
     public Thief(Behavior myBehavior, SearchBehavior mySearchBehavior){
         this.thBehavior = myBehavior;

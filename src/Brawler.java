@@ -6,7 +6,6 @@ public class Brawler extends Adventurer {
     public SearchBehavior searchBrawlBehavior;
 
     protected String name = "Brawler";
-    public SearchBehavior searchBrawlBehavior;
 
     public Brawler(Behavior myBehavior, SearchBehavior mySearchBehavior){
         this.brawlBehavior = myBehavior;
