@@ -411,6 +411,10 @@ public class GameEngine extends Subject{
         sneak.setMyRoom(startingRoom);
         run.setMyRoom(startingRoom);
         th.setMyRoom(startingRoom);
+        brawl.setDamage(0);
+        sneak.setDamage(0);
+        run.setDamage(0);
+        th.setDamage(0);
         //makeTreasures();
         // These will determine when to end the game, conditions checked at end of while loop
         boolean game = true;
@@ -760,20 +764,28 @@ public class GameEngine extends Subject{
     public void printGame() {
         //print all of the Adventurers
         System.out.printf("Brawler - ");
-        brawl.getTreasure();
-        System.out.printf(" Treasures - ", brawl.getDamage(), " Damage");
+        brawl.printTreasure();
+        System.out.print(" Treasures - ");
+        System.out.print(brawl.getDamage());
+        System.out.print(" Damage");
         System.out.println(" ");
         System.out.printf("Sneaker - ");
-        sneak.getTreasure();
-        System.out.printf(" Treasures - ", sneak.getDamage(), " Damage");
+        sneak.printTreasure();
+        System.out.print(" Treasures - ");
+        System.out.print(sneak.getDamage());
+        System.out.print(" Damage");
         System.out.println(" ");
         System.out.printf("Thief - ");
-        th.getTreasure();
-        System.out.printf(" Treasures - ", th.getDamage(), " Damage");
+        th.printTreasure();
+        System.out.print(" Treasures - ");
+        System.out.print(th.getDamage());
+        System.out.print(" Damage");
         System.out.println(" ");
         System.out.printf("Runner - ");
-        run.getTreasure();
-        System.out.printf(" Treasures - ", run.getDamage(), " Damage");
+        run.printTreasure();
+        System.out.print(" Treasures - ");
+        System.out.print(run.getDamage());
+        System.out.print(" Damage");
         System.out.println(" ");
 
         //print all of the creatures

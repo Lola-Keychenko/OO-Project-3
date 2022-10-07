@@ -49,10 +49,13 @@ public class Adventurer extends Subject{
         int intRandom = rand1 + rand2;
         return intRandom;
     }
-    public void getTreasure(){
+    public void printTreasure(){
+        System.out.print(treasures.size());
+        /*
         for(int i = 0; i < treasures.size(); i++){
             System.out.printf(" ", treasures.get(i), " ");
         }
+        */
     }
     //Method to compare treasure arraylists with room to see if adv already has a treasure
     public void compareTreasures(ArrayList<Treasure> roomTreasures){
