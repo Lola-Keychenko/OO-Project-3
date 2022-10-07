@@ -410,102 +410,230 @@ public class GameEngine {
             int totalTreasure = 0;
 
             // Then move each adventurer
-            for (int i = 0; i < adventureList.size(); i++) {
-                // Move each adventurer
-                // Get the adventurer, find the room the adventurer is in
-                Adventurer a = adventureList.get(i);
-                Room r = a.getMyRoom();
-                int roomNum = r.getRoom();
-                // Take note of what type of adventurer is in the room
-                int adventurerType;
-                if(r.isHasRunner()){ // Runner
-                    adventurerType = 1;
-                }else if(r.isHasBrawler()){ // Brawler
-                    adventurerType = 2;
-                }else if(r.isHasSneaker()){ // Sneaker
-                    adventurerType = 3;
-                }else{
-                    adventurerType = 4; // Thief
-                }
+            /*
+            TODO: Unroll the adventurer loop, make each move specific to adventurer type
+            a.executeBehavior will NOT work for a Adventurer, only for t Thief or s Sneaker
 
-                // Move adventurer to new room, then update new/old room with content based on creature type
-                int newRoomNum = a.setNewRoom(roomNum);
-                Room r1 = new Room(newRoomNum);
-                a.setMyRoom(r1);
-                // Update the new Room with the adventurer, remove adventurer from old room
-                if(adventurerType == 1){
-                    r1.setHasRunner(true);
-                    r.setHasRunner(false);
-                }else if(adventurerType == 2){
-                    r1.setHasBrawler(true);
-                    r.setHasBrawler(false);
-                }else if(adventurerType == 3){
-                    r1.setHasSneaker(true);
-                    r.setHasSneaker(false);
-                }else{
-                    r1.setHasThief(true);
-                    r.setHasThief(false);
-                }
+             */
+            // Move each adventurer one by one
 
-                // Now check the new room for creatures
-                boolean isCreature = CreatureCheck(r1);
-                // If there is a creature present, then fight
-                if(isCreature){
-                    // First figure out what kind of creature is in the room
-                    int creatureType;
-                    if(r1.isHasBlinker()){
-                        creatureType = 1;
-                    }else if(r1.isHasSeeker()){
-                        creatureType = 2;
+            // START WITH RUNNER
+
+            if(adventureList.contains(run)){ // if the adventurer is still alive, move it
+                Room runRoom = run.getMyRoom();
+                int runRoomNum = runRoom.getRoom();
+                int newRunRoomNum = run.setNewRoom(runRoomNum);
+                Room runRoom1 = new Room(newRunRoomNum);
+                run.setMyRoom(runRoom1);
+                runRoom1.setHasRunner(true);
+                runRoom.setHasRunner(false);
+
+                boolean runIsCreature = CreatureCheck(runRoom1);
+                if(runIsCreature){
+                    int runCreatureType;
+                    if(runRoom1.isHasBlinker()){
+                        runCreatureType = 1;
+                    }else if(runRoom1.isHasSeeker()){
+                        runCreatureType = 2;
                     }else{
-                        creatureType = 3; // Orbiter is type 3
+                        runCreatureType = 3; // Orbiter is type 3
                     }
-
-                    // 0 means tie, 1 means Adventurer win, 2 means Creature win
-                    int fightResult = a.executeStrategy(r1);
-
-
-                    if(fightResult == 1){
+                    int runFight = run.executeStrategy(runRoom1);
+                    if(runFight == 1){
                         // If the adventurer wins, eliminate the creature
-                        if(creatureType == 1) {
-                            r1.setHasBlinker(false);
+                        if(runCreatureType == 1) {
+                            runRoom1.setHasBlinker(false);
                             creaturesEliminated++;
                             if(Blinkers.size() > 0) {
                                 Blinkers.remove(Blinkers.get(0));
                             }
-                        }else if(creatureType == 2){
-                            r1.setHasSeeker(false);
+                        }else if(runCreatureType == 2){
+                            runRoom1.setHasSeeker(false);
                             creaturesEliminated++;
                             if(Seekers.size()>0){
                                 Seekers.remove(Seekers.get(0));
                             }
 
                         }else{
-                            r1.setHasOrbiter(false);
+                            runRoom1.setHasOrbiter(false);
                             creaturesEliminated++;
                             if(Orbiters.size()>0){
                                 Orbiters.remove(Orbiters.get(0));
                             }
-
                         }
-                    }else if(fightResult == 2){
+                    }else if(runFight == 2){
                         // If the creature wins, add one to the adventurer's damage
-                        a.setDamage(a.getDamage() + 1);
+                        run.setDamage(run.getDamage() + 1);
                     }
-                    // Do nothing if tie
-                }else {
-                    // Search for treasure
-                    boolean isTreasure = a.isTreasure();
-                    if (isTreasure) {
-                        if (adventurerType == 4) {
-                            // If the adventurer is a Thief
-                            a.setTreasure(a.getTreasure() + 2);
-                        } else {
-                            a.setTreasure(a.getTreasure() + 1);
-                        }
-                    }
+                    // Search for Treasure
                 }
-            } // For loop of adventurers EXIT
+            }
+
+            // BRAWLER MOVES
+
+            if(adventureList.contains(brawl)){ // if the adventurer is still alive, move it
+                Room brawlRoom = brawl.getMyRoom();
+                int brawlRoomNum = brawlRoom.getRoom();
+                int newBrawlRoomNum = brawl.setNewRoom(brawlRoomNum);
+                Room brawlRoom1 = new Room(newBrawlRoomNum);
+                brawl.setMyRoom(brawlRoom1);
+                brawlRoom1.setHasRunner(true);
+                brawlRoom1.setHasRunner(false);
+
+                // If there is a creature inside the room, the two will fight
+                boolean brawlIsCreature = CreatureCheck(brawlRoom1);
+                if(brawlIsCreature){
+                    // Take note of what kind of creature is present in the room
+                    int brawlCreatureType;
+                    if(brawlRoom1.isHasBlinker()){
+                        brawlCreatureType = 1;
+                    }else if(brawlRoom1.isHasSeeker()){
+                        brawlCreatureType = 2;
+                    }else{
+                        brawlCreatureType = 3; // Orbiter is type 3
+                    }
+                    // Brawler fights creature, int returned describes who won
+                    int brawlFight = brawl.executeStrategy(brawlRoom1);
+                    if(brawlFight == 1){
+                        // If the adventurer wins, eliminate the creature
+                        if(brawlCreatureType == 1) {
+                            brawlRoom1.setHasBlinker(false);
+                            creaturesEliminated++;
+                            if(Blinkers.size() > 0) {
+                                Blinkers.remove(Blinkers.get(0));
+                            }
+                        }else if(brawlCreatureType == 2){
+                            brawlRoom1.setHasSeeker(false);
+                            creaturesEliminated++;
+                            if(Seekers.size()>0){
+                                Seekers.remove(Seekers.get(0));
+                            }
+
+                        }else{
+                            brawlRoom1.setHasOrbiter(false);
+                            creaturesEliminated++;
+                            if(Orbiters.size()>0){
+                                Orbiters.remove(Orbiters.get(0));
+                            }
+                        }
+                    }else if(brawlFight == 2){
+                        // If the creature wins, add one to the adventurer's damage
+                        brawl.setDamage(brawl.getDamage() + 1);
+                    }
+                    // Search for Treasure
+                }
+            }
+
+            // SNEAKER MOVES
+
+            if(adventureList.contains(sneak)){ // if the adventurer is still alive, move it
+                Room sneakRoom = sneak.getMyRoom();
+                int sneakRoomNum = sneakRoom.getRoom();
+                int newsneakRoomNum = sneak.setNewRoom(sneakRoomNum);
+                Room sneakRoom1 = new Room(newsneakRoomNum);
+                sneak.setMyRoom(sneakRoom1);
+                sneakRoom1.setHasRunner(true);
+                sneakRoom1.setHasRunner(false);
+
+                // If there is a creature inside the room, the two will fight
+                boolean sneakIsCreature = CreatureCheck(sneakRoom1);
+                if(sneakIsCreature){
+                    // Take note of what kind of creature is present in the room
+                    int sneakCreatureType;
+                    if(sneakRoom1.isHasBlinker()){
+                        sneakCreatureType = 1;
+                    }else if(sneakRoom1.isHasSeeker()){
+                        sneakCreatureType = 2;
+                    }else{
+                        sneakCreatureType = 3; // Orbiter is type 3
+                    }
+                    // Brawler fights creature, int returned describes who won
+                    int sneakFight = sneak.executeStrategy(sneakRoom1);
+                    if(sneakFight == 1){
+                        // If the adventurer wins, eliminate the creature
+                        if(sneakCreatureType == 1) {
+                            sneakRoom1.setHasBlinker(false);
+                            creaturesEliminated++;
+                            if(Blinkers.size() > 0) {
+                                Blinkers.remove(Blinkers.get(0));
+                            }
+                        }else if(sneakCreatureType == 2){
+                            sneakRoom1.setHasSeeker(false);
+                            creaturesEliminated++;
+                            if(Seekers.size()>0){
+                                Seekers.remove(Seekers.get(0));
+                            }
+
+                        }else{
+                            sneakRoom1.setHasOrbiter(false);
+                            creaturesEliminated++;
+                            if(Orbiters.size()>0){
+                                Orbiters.remove(Orbiters.get(0));
+                            }
+                        }
+                    }else if(sneakFight == 2){
+                        // If the creature wins, add one to the adventurer's damage
+                        sneak.setDamage(sneak.getDamage() + 1);
+                    }
+                    // Search for Treasure
+                }
+            }
+
+            // THIEF MOVES
+
+            if(adventureList.contains(th)){ // if the adventurer is still alive, move it
+                Room thRoom = th.getMyRoom();
+                int thRoomNum = thRoom.getRoom();
+                int newthRoomNum = th.setNewRoom(thRoomNum);
+                Room thRoom1 = new Room(newthRoomNum);
+                th.setMyRoom(thRoom1);
+                thRoom1.setHasRunner(true);
+                thRoom1.setHasRunner(false);
+
+                // If there is a creature inside the room, the two will fight
+                boolean thIsCreature = CreatureCheck(thRoom1);
+                if(thIsCreature){
+                    // Take note of what kind of creature is present in the room
+                    int thCreatureType;
+                    if(thRoom1.isHasBlinker()){
+                        thCreatureType = 1;
+                    }else if(thRoom1.isHasSeeker()){
+                        thCreatureType = 2;
+                    }else{
+                        thCreatureType = 3; // Orbiter is type 3
+                    }
+                    // Brawler fights creature, int returned describes who won
+                    int thFight = th.executeStrategy(thRoom1);
+                    if(thFight == 1){
+                        // If the adventurer wins, eliminate the creature
+                        if(thCreatureType == 1) {
+                            thRoom1.setHasBlinker(false);
+                            creaturesEliminated++;
+                            if(Blinkers.size() > 0) {
+                                Blinkers.remove(Blinkers.get(0));
+                            }
+                        }else if(thCreatureType == 2){
+                            thRoom1.setHasSeeker(false);
+                            creaturesEliminated++;
+                            if(Seekers.size()>0){
+                                Seekers.remove(Seekers.get(0));
+                            }
+
+                        }else{
+                            thRoom1.setHasOrbiter(false);
+                            creaturesEliminated++;
+                            if(Orbiters.size()>0){
+                                Orbiters.remove(Orbiters.get(0));
+                            }
+                        }
+                    }else if(thFight == 2){
+                        // If the creature wins, add one to the adventurer's damage
+                        th.setDamage(th.getDamage() + 1);
+                    }
+                    // Search for Treasure
+                }
+            }
+
 
             // Creatures Move
             for(int j = 0; j < Orbiters.size(); j++){

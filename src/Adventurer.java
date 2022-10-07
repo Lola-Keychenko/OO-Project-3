@@ -5,7 +5,7 @@ public class Adventurer{
     private Room myAdvRoom;
     private ArrayList<Treasure> treasures = new ArrayList<Treasure>();
     private int damage;
-
+    Behavior behavior;
 
     public Adventurer(){
         damage = 0;
