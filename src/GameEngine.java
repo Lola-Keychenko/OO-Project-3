@@ -715,7 +715,12 @@ public class GameEngine extends Subject{
 
 
     public void printGame() {
-        //print all of the Adventurers
+        // CALL TRACKER IN HERE ONCE GAME IS OVER
+
+
+
+
+        /*//print all of the Adventurers
         System.out.println("Brawler - "+brawl.getTreasure()+" Treasures - "+brawl.getDamage()+" Damage");
         System.out.println("Sneaker - "+sneak.getTreasure()+" Treasures - "+sneak.getDamage()+" Damage");
         System.out.println("Runner - "+run.getTreasure()+" Treasures - "+run.getDamage()+" Damage");
@@ -767,8 +772,7 @@ public class GameEngine extends Subject{
             }
 
             System.out.println(" ");
-        }
-
+        } */
 
     }
 }

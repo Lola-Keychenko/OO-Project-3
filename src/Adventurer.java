@@ -6,6 +6,7 @@ public class Adventurer extends Subject{
     private ArrayList<Treasure> treasures = new ArrayList<Treasure>();
     private int damage;
     Behavior behavior;
+    public String name;
 
     public void publish(){
         Message myMess = new Message();
@@ -14,11 +15,7 @@ public class Adventurer extends Subject{
         myMess.setName(name);
         notifyObserver(myMess);
     }
-    public Room myAdvRoom;
-    public ArrayList<Treasure> treasures = new ArrayList<Treasure>();
-    private int damage;
 
-    public String name;
     public Adventurer(String myName){
         damage = 0;
         // All initialized Adventurers start in room number 011
@@ -67,6 +64,8 @@ public class Adventurer extends Subject{
                 i--;
             }
         }
+
+        publish();
     }
 
     // Getters
@@ -80,9 +79,11 @@ public class Adventurer extends Subject{
     // Setters
     public void setMyRoom(Room myRoom) {
         this.myAdvRoom = myRoom;
+        publish();
     }
 
     public void setDamage(int damage) {
+        publish();
         this.damage = damage;
     }
 
