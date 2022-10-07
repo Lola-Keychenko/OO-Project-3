@@ -1,5 +1,5 @@
 import java.util.Random;
-public class Creature {
+public class Creature extends Subject{
     // THESE PROTECTED VARIABLES ARE GOOD EXAMPLES OF ABSTRACTION
     // THEY ARE AVAILABLE TO THE SUBCLASSES OF THIS SUPERCLASS BUT NOT OTHER ONES
     protected Room myRoom; //creatures room
@@ -9,6 +9,12 @@ public class Creature {
     public Creature(Room newRoom){
         myRoom = newRoom;
         damage = 0;
+    }
+
+    public void publish(){
+        Message myMess = new Message();
+        myMess.setCreRoom(Integer.toString(myRoom.getRoom()));
+        notifyObserver(myMess);
     }
 
     //Make Creature Roll 1-6 on two dice

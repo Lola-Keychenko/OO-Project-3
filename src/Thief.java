@@ -10,4 +10,6 @@ public class Thief extends Adventurer{
     public int executeStrategy(Room r1){
         return thBehavior.fight(r1);
     }
+
+
 }
