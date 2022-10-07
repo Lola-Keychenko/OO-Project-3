@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Expert implements Behavior{
+public class Expert extends Behavior {
     //Expert - gains +2 to 2 dice roll used for fighting a creature
     public int fight(Room r){
         Random rand = new Random();

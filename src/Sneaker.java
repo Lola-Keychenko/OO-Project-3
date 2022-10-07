@@ -5,6 +5,7 @@ public class Sneaker extends Adventurer{
     public Behavior sneakBehavior;
 
     public Sneaker(Behavior myBehavior){
+        super();
         this.sneakBehavior = myBehavior;
     }
 

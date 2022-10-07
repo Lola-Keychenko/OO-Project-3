@@ -8,6 +8,7 @@ public class Adventurer extends Subject{
     Behavior behavior;
     public String name;
 
+
     public void publish(){
         Message myMess = new Message();
         myMess.setAdvRoom(Integer.toString(myAdvRoom.getRoom()));
