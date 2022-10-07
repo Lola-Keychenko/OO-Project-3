@@ -5,7 +5,6 @@ public class Stealth extends Behavior {
 
     // Return 0 if tie/no fight, return 1 if Adventure win, return 2 if Creature win
     public int fight(Room r){
-        System.out.println("Fighting in Stealth");
         Random rand = new Random();
         // Determine if the adventurer will avoid combat
         if(r.isHasSeeker() || r.isHasBlinker() || r.isHasOrbiter()){

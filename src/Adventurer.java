@@ -33,7 +33,7 @@ public class Adventurer extends Subject{
     public ArrayList<Treasure> getTreasures(){
         return treasures;
     }
-    
+    /*
     public void publish(){
         Message myMess = new Message();
         myMess.setAdvRoom(Integer.toString(myAdvRoom.getRoom()));
@@ -41,7 +41,7 @@ public class Adventurer extends Subject{
         notifyObserver(myMess);
 
     }
-
+    */
     public int Roll(){
         Random rand = new Random();
         int rand1 = rand.nextInt(6) + 1;
@@ -82,7 +82,7 @@ public class Adventurer extends Subject{
             }
         }
 
-        publish();
+        //publish();
     }
 
     // Getters
@@ -96,20 +96,22 @@ public class Adventurer extends Subject{
     // Setters
     public void setMyRoom(Room myRoom) {
         this.myAdvRoom = myRoom;
-        publish();
+        //publish();
     }
 
     public void setDamage(int damage) {
         this.damage = damage;
-        publish();
+        //publish();
     }
 
     // Finds what position the adventurer is in 
     public int setNewRoom(int currentRoom){
         // Check if I'm in a starting room
-        if(currentRoom== 011){
+        if(currentRoom == 11){
+            System.out.println("RETURNING 111");
+            System.out.println(currentRoom+100);
             // Can only move U 
-            return currentRoom+100;
+            return 111;
         } else if(currentRoom == 411){
             // Room 411 is the top, so can move everywhere except up.
             Random rand = new Random();
@@ -167,7 +169,7 @@ public class Adventurer extends Subject{
             }else if(randomInt == 3){ // Move N
                 return currentRoom - 10;
             }
-        }else if(currentRoom % 100 == 11 && currentRoom != 211){
+        }else if(currentRoom % 100 == 11){
             // Center room -> Can move N/S/E/W/U/D
             Random rand = new Random();
             int randomInt = rand.nextInt(6) + 1;
@@ -175,21 +177,6 @@ public class Adventurer extends Subject{
                 return currentRoom + 100;
             } else if(randomInt == 2){ // Move D
                 return currentRoom - 100;
-            }else if(randomInt == 3){ // Move S
-                return currentRoom + 10;
-            }else if(randomInt == 4){ // Move N
-                return currentRoom - 10;
-            }else if(randomInt == 5){ // Move E
-                return currentRoom + 1;
-            }else if(randomInt == 6){ // Move W
-                return currentRoom - 1;
-            }
-        }else if(currentRoom % 100 == 11){
-            // Center room -> Can move N/S/E/W/U
-            Random rand = new Random();
-            int randomInt = rand.nextInt(6) + 1;
-            if(randomInt == 1){ // Move U
-                return currentRoom + 100;
             }else if(randomInt == 3){ // Move S
                 return currentRoom + 10;
             }else if(randomInt == 4){ // Move N

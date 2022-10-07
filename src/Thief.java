@@ -18,7 +18,7 @@ public class Thief extends Adventurer{
         return searchthBehavior.search(r1);
     }
 
-
+/*
     public void publish(){
         Message myMess = new Message();
         myMess.setAdvRoom(Integer.toString(myAdvRoom.getRoom()));
@@ -27,7 +27,7 @@ public class Thief extends Adventurer{
         notifyObserver(myMess);
     }
 
-
+*/
 }
 
 

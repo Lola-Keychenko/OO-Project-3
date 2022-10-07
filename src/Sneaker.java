@@ -20,7 +20,7 @@ public class Sneaker extends Adventurer{
     public boolean executeSearchStrategy(Room r1){
         return searchSneakBehavior.search(r1);
     }
-
+    /*
     public void publish(){
         Message myMess = new Message();
         myMess.setAdvRoom(Integer.toString(myAdvRoom.getRoom()));
@@ -28,5 +28,7 @@ public class Sneaker extends Adventurer{
         myMess.setName(name);
         notifyObserver(myMess);
     }
+    */
+
 }
 

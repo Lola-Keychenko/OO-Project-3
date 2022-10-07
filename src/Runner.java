@@ -20,7 +20,7 @@ public class Runner extends Adventurer{
     public boolean executeSearchStrategy(Room r1){
         return searchRunBehavior.search(r1);
     }
-
+    /*
     public void publish(){
         Message myMess = new Message();
         myMess.setAdvRoom(Integer.toString(myAdvRoom.getRoom()));
@@ -28,5 +28,6 @@ public class Runner extends Adventurer{
         myMess.setName(name);
         notifyObserver(myMess);
     }
+     */
 }
 

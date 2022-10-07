@@ -161,7 +161,7 @@ public class GameEngine extends Subject{
         //zero floor
         ArrayList<Room> zeroFloor = new ArrayList<Room>();
 
-        Room r011 = new Room(011); //entrance room, only connected to middle middle first floor
+        Room r011 = new Room(11); //entrance room, only connected to middle middle first floor
         zeroFloor.add(r011);
 
         allRooms.add(zeroFloor);
@@ -267,6 +267,9 @@ public class GameEngine extends Subject{
 
     // ALL INITALIZATION OF CREATURES METHODS
     public Room findRoom(int room) {
+        if(room == 11){
+            return allRooms.get(0).get(0);
+        }
         for (int i = 0; i < allRooms.get(room / 100).size(); i++) {
             if (room == allRooms.get(room / 100).get(i).getRoom()) {
                 return allRooms.get(room / 100).get(i);
@@ -422,22 +425,21 @@ public class GameEngine extends Subject{
             //System.out.println("TAKING A TURN");
             // Run through turns while end conditions are not met
             // FIRST DISPLAY BOARD
-            //printGame();
+            printGame();
             // Move each adventurer one by one
             Logger myLog = new Logger("1");
-            
+
             // START WITH RUNNER
             if(adventureList.contains(run)){ // if the adventurer is still alive, move it
                 Room runRoom = run.getMyRoom();
                 int runRoomNum = runRoom.getRoom();
                 int newRunRoomNum = run.setNewRoom(runRoomNum);
-                Room runRoom1 = new Room(newRunRoomNum);
+                Room runRoom1 = findRoom(newRunRoomNum);
                 run.setMyRoom(runRoom1);
                 runRoom1.setHasRunner(true);
                 runRoom.setHasRunner(false);
                 boolean runIsCreature = CreatureCheck(runRoom1);
                 if(runIsCreature){
-                    System.out.println("FIGHT");
                     int runCreatureType;
                     if(runRoom1.isHasBlinker()){
                         runCreatureType = 1;
@@ -498,7 +500,7 @@ public class GameEngine extends Subject{
                 Room brawlRoom = brawl.getMyRoom();
                 int brawlRoomNum = brawlRoom.getRoom();
                 int newBrawlRoomNum = brawl.setNewRoom(brawlRoomNum);
-                Room brawlRoom1 = new Room(newBrawlRoomNum);
+                Room brawlRoom1 = findRoom(newBrawlRoomNum);
                 brawl.setMyRoom(brawlRoom1);
                 brawlRoom1.setHasRunner(true);
                 brawlRoom1.setHasRunner(false);
@@ -506,7 +508,6 @@ public class GameEngine extends Subject{
                 // If there is a creature inside the room, the two will fight
                 boolean brawlIsCreature = CreatureCheck(brawlRoom1);
                 if(brawlIsCreature){
-                    System.out.println("FIght");
                     // Take note of what kind of creature is present in the room
                     int brawlCreatureType;
                     if(brawlRoom1.isHasBlinker()){
@@ -569,7 +570,7 @@ public class GameEngine extends Subject{
                 Room sneakRoom = sneak.getMyRoom();
                 int sneakRoomNum = sneakRoom.getRoom();
                 int newsneakRoomNum = sneak.setNewRoom(sneakRoomNum);
-                Room sneakRoom1 = new Room(newsneakRoomNum);
+                Room sneakRoom1 = findRoom(newsneakRoomNum);
                 sneak.setMyRoom(sneakRoom1);
                 sneakRoom1.setHasRunner(true);
                 sneakRoom1.setHasRunner(false);
@@ -577,7 +578,6 @@ public class GameEngine extends Subject{
                 // If there is a creature inside the room, the two will fight
                 boolean sneakIsCreature = CreatureCheck(sneakRoom1);
                 if(sneakIsCreature){
-                    System.out.println("Fight");
                     // Take note of what kind of creature is present in the room
                     int sneakCreatureType;
                     if(sneakRoom1.isHasBlinker()){
@@ -640,7 +640,7 @@ public class GameEngine extends Subject{
                 Room thRoom = th.getMyRoom();
                 int thRoomNum = thRoom.getRoom();
                 int newthRoomNum = th.setNewRoom(thRoomNum);
-                Room thRoom1 = new Room(newthRoomNum);
+                Room thRoom1 = findRoom(newthRoomNum);
                 th.setMyRoom(thRoom1);
                 thRoom1.setHasRunner(true);
                 thRoom1.setHasRunner(false);
@@ -648,7 +648,6 @@ public class GameEngine extends Subject{
                 // If there is a creature inside the room, the two will fight
                 boolean thIsCreature = CreatureCheck(thRoom1);
                 if(thIsCreature){
-                    System.out.println("Fight");
                     // Take note of what kind of creature is present in the room
                     int thCreatureType;
                     if(thRoom1.isHasBlinker()){

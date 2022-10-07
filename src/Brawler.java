@@ -17,6 +17,7 @@ public class Brawler extends Adventurer {
     }
     public boolean executeSearchStrategy(Room r1){ return searchBrawlBehavior.search(r1);}
 
+    /*
     public void publish(){
         Message myMess = new Message();
         myMess.setAdvRoom(Integer.toString(myAdvRoom.getRoom()));
@@ -24,6 +25,8 @@ public class Brawler extends Adventurer {
         myMess.setName(name);
         notifyObserver(myMess);
     }
+
+     */
 }
 
 
