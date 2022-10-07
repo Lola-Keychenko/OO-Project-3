@@ -1,10 +1,11 @@
 import java.util.Random;
 
-public class Stealth implements Behavior{
+public class Stealth extends Behavior {
     //Stealth - has a 50% chance of avoiding combat for each creature engaged, no bonus to 2 dice roll for fighting a creature
 
     // Return 0 if tie/no fight, return 1 if Adventure win, return 2 if Creature win
     public int fight(Room r){
+        System.out.println("Fighting in Stealth");
         Random rand = new Random();
         // Determine if the adventurer will avoid combat
         if(r.isHasSeeker() || r.isHasBlinker() || r.isHasOrbiter()){

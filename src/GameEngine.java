@@ -410,6 +410,7 @@ public class GameEngine extends Subject{
         // These will determine when to end the game, conditions checked at end of while loop
         boolean game = true;
 
+        System.out.println("Starting to run game");
 
         int creaturesEliminated = 0;
         int adventurersEliminated = 0;
@@ -420,6 +421,7 @@ public class GameEngine extends Subject{
             // FIRST DISPLAY BOARD
             // printGame();
             // Move each adventurer one by one
+            Logger myLog = new Logger("1");
 
             // START WITH RUNNER
             if(adventureList.contains(run)){ // if the adventurer is still alive, move it
@@ -692,7 +694,7 @@ public class GameEngine extends Subject{
             if(totalTreasure >= 10 || creaturesEliminated == 12){
                 for(int j = 0; j < adventureList.size(); j++){
                     if(adventureList.get(j).getDamage() >= 3){
-                      adventurersEliminated++;
+                        adventurersEliminated++;
                     }
                 }
                 System.out.printf("Total Treasure found:");

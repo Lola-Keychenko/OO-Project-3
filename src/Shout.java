@@ -5,8 +5,9 @@ public class Shout extends celebrationDecorator{
         this.behavior = behavior; //a way to set the instance variable to the object we are wrapping
         //pass the behavior we are wrapping to the decorators constructor
     }
-    public void fight(Room r){
+    public int fight(Room r){
         //do extended behavior
         System.out.println("Shout!");
+        return 1;
     }
 }
