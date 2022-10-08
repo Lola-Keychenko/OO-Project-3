@@ -1,0 +1,200 @@
+/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/bin/java -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=58587:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8 -classpath /Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/jre/lib/ext/jaccess.jar:/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/jre/lib/management-agent.jar:/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/jre/lib/rt.jar:/Users/bradleysides/Desktop/Fall_2022/OOAD/OO-Project-3/out/production/OO-Project-3 Main
+RUN NUMBER: 0
+Before Running Game
+Starting to run game
+Brawler - 0 Treasures - 0 Damage 
+Sneaker - 0 Treasures - 0 Damage 
+Thief - 0 Treasures - 0 Damage 
+Runner - 0 Treasures - 0 Damage 
+Orbiters - 4 Remaining
+Seekers - 4 Remaining
+Blinkers - 4 Remaining
+RotLAL: 
+100  101  102  110  111  112  120  121  122   
+200  201  202  210  211  212  220  221  222   
+300  301  302  310  311  312  320  321  322   
+400  401  402  410  411  412  420  421  422   
+Brawler - 0 Treasures - 0 Damage 
+Sneaker - 0 Treasures - 0 Damage 
+Thief - 0 Treasures - 0 Damage 
+Runner - 0 Treasures - 0 Damage 
+Orbiters - 4 Remaining
+Seekers - 4 Remaining
+Blinkers - 4 Remaining
+RotLAL: 
+100  101  102 : BL 110 : OR 111  112  120  121  122   
+200  201  202  210 : OR 211  212  220 : BL 221 : OR 222 : BL  
+300  301  302  310  311  312  320  321  322   
+400  401  402  410  411  412 : BL: OR 420  421  422   
+CREATURE PRESENT
+TREASURE
+COMPARING TREASURESs
+RETURNING 111
+111
+Brawler - 0 Treasures - 0 Damage 
+Sneaker - 0 Treasures - 0 Damage 
+Thief - 0 Treasures - 0 Damage 
+Runner - 0 Treasures - 0 Damage 
+Orbiters - 4 Remaining
+Seekers - 4 Remaining
+Blinkers - 3 Remaining
+RotLAL: 
+100 : OR 101  102  110  111  112  120  121  122   
+200 : OR 201  202  210  211  212  220 : OR 221  222 : BL  
+300  301 : BL 302  310  311  312  320  321  322   
+400  401  402  410  411 : BL 412  420  421  422 : OR  
+Brawler - 0 Treasures - 0 Damage 
+Sneaker - 0 Treasures - 0 Damage 
+Thief - 0 Treasures - 0 Damage 
+Runner - 0 Treasures - 0 Damage 
+Orbiters - 4 Remaining
+Seekers - 4 Remaining
+Blinkers - 3 Remaining
+RotLAL: 
+100  101 : OR 102  110  111  112  120  121  122   
+200  201 : OR 202  210 : OR 211  212  220  221  222 : BL  
+300  301  302  310  311  312  320  321  322   
+400  401  402  410  411 : BL 412  420 : BL 421 : OR 422 : BL  
+Brawler - 0 Treasures - 0 Damage 
+Sneaker - 0 Treasures - 0 Damage 
+Thief - 0 Treasures - 0 Damage 
+Runner - 0 Treasures - 0 Damage 
+Orbiters - 4 Remaining
+Seekers - 4 Remaining
+Blinkers - 3 Remaining
+RotLAL: 
+100  101  102 : OR 110  111  112  120  121  122   
+200 : OR 201  202 : OR 210  211  212  220 : BL 221  222 : BL  
+300  301 : BL 302  310  311  312  320  321  322   
+400  401  402  410 : BL 411  412  420 : OR 421  422   
+Brawler - 0 Treasures - 0 Damage 
+Sneaker - 0 Treasures - 0 Damage 
+Thief - 0 Treasures - 0 Damage 
+Runner - 0 Treasures - 0 Damage 
+Orbiters - 4 Remaining
+Seekers - 4 Remaining
+Blinkers - 3 Remaining
+RotLAL: 
+100  101  102 : BL 110  111  112 : OR 120  121  122   
+200  201 : OR 202 : BL 210  211  212 : BL: OR 220  221  222 : BL  
+300  301  302  310  311  312  320  321  322   
+400  401  402  410 : OR 411  412  420  421  422   
+RETURNING 111
+111
+Brawler - 0 Treasures - 0 Damage 
+Sneaker - 0 Treasures - 0 Damage 
+Thief - 0 Treasures - 0 Damage 
+Runner - 0 Treasures - 0 Damage 
+Orbiters - 4 Remaining
+Seekers - 4 Remaining
+Blinkers - 3 Remaining
+RotLAL: 
+100  101  102  110  111  112 : BL 120  121  122 : OR  
+200  201  202 : OR 210  211  212  220  221  222 : BL: OR  
+300  301 : BL 302  310  311 : BL 312  320  321  322   
+400 : OR 401  402  410  411  412  420  421  422   
+CREATURE PRESENT
+TREASURE
+Brawler - 0 Treasures - 0 Damage 
+Sneaker - 0 Treasures - 0 Damage 
+Thief - 0 Treasures - 0 Damage 
+Runner - 0 Treasures - 0 Damage 
+Orbiters - 4 Remaining
+Seekers - 4 Remaining
+Blinkers - 2 Remaining
+RotLAL: 
+100  101  102  110  111  112  120  121 : OR 122   
+200  201  202  210  211  212 : OR 220  221 : OR 222 : BL  
+300  301 : BL 302  310  311  312  320  321 : BL 322   
+400  401 : OR 402  410  411 : BL 412  420  421  422   
+RETURNING 111
+111
+Brawler - 0 Treasures - 0 Damage 
+Sneaker - 0 Treasures - 0 Damage 
+Thief - 0 Treasures - 0 Damage 
+Runner - 0 Treasures - 0 Damage 
+Orbiters - 4 Remaining
+Seekers - 4 Remaining
+Blinkers - 2 Remaining
+RotLAL: 
+100  101  102  110  111  112  120 : OR 121  122   
+200  201  202  210  211  212 : BL 220 : BL: OR 221  222 : BL: OR  
+300  301 : BL 302  310  311  312  320  321  322   
+400  401  402 : OR 410  411  412  420  421  422   
+Brawler - 0 Treasures - 0 Damage 
+Sneaker - 0 Treasures - 0 Damage 
+Thief - 0 Treasures - 0 Damage 
+Runner - 0 Treasures - 0 Damage 
+Orbiters - 4 Remaining
+Seekers - 4 Remaining
+Blinkers - 2 Remaining
+RotLAL: 
+100  101  102 : BL 110 : OR 111  112  120  121  122   
+200  201  202  210 : OR 211  212  220  221 : OR 222 : BL  
+300  301 : BL 302  310  311  312  320  321  322   
+400  401  402  410  411  412 : OR 420  421  422 : BL  
+RETURNING 111
+111
+Brawler - 0 Treasures - 0 Damage 
+Sneaker - 0 Treasures - 0 Damage 
+Thief - 0 Treasures - 0 Damage 
+Runner - 0 Treasures - 0 Damage 
+Orbiters - 4 Remaining
+Seekers - 4 Remaining
+Blinkers - 2 Remaining
+RotLAL: 
+100 : OR 101  102  110 : BL 111 : RN: SE 112  120  121  122   
+200 : OR 201  202  210  211  212  220 : OR 221  222 : BL  
+300  301 : BL 302  310  311  312  320  321  322   
+400  401  402  410  411  412  420  421  422 : BL: OR  
+CREATURE PRESENT
+TREASURE
+CREATURE PRESENT
+TREASURE
+Brawler - 0 Treasures - 0 Damage 
+Sneaker - 0 Treasures - 1 Damage 
+Thief - 0 Treasures - 0 Damage 
+Runner - 0 Treasures - 0 Damage 
+Orbiters - 4 Remaining
+Seekers - 4 Remaining
+Blinkers - 1 Remaining
+RotLAL: 
+100 : BL 101 : OR 102  110  111 : SE 112  120  121  122   
+200  201 : OR 202  210 : OR 211  212  220  221  222 : BL  
+300  301 : BL 302  310  311  312  320  321  322   
+400  401  402  410  411  412  420  421 : OR 422   
+RETURNING 111
+111
+CREATURE PRESENT
+TREASURE
+Brawler - 0 Treasures - 0 Damage 
+Sneaker - 0 Treasures - 1 Damage 
+Thief - 0 Treasures - 1 Damage 
+Runner - 0 Treasures - 0 Damage 
+Orbiters - 4 Remaining
+Seekers - 4 Remaining
+Blinkers - 1 Remaining
+RotLAL: 
+100  101  102 : OR 110  111 : SE 112  120  121  122   
+200 : OR 201  202 : OR 210  211  212  220  221  222 : BL  
+300  301 : BL 302  310  311  312  320  321  322   
+400  401  402 : BL 410  411  412  420 : OR 421  422   
+Brawler - 0 Treasures - 0 Damage 
+Sneaker - 0 Treasures - 1 Damage 
+Thief - 0 Treasures - 1 Damage 
+Runner - 0 Treasures - 0 Damage 
+Orbiters - 4 Remaining
+Seekers - 4 Remaining
+Blinkers - 1 Remaining
+RotLAL: 
+100  101  102  110  111  112 : OR 120  121 : RN: SE 122   
+200  201 : OR 202  210  211  212 : OR 220  221  222 : BL  
+300  301 : BL 302  310  311  312  320  321  322   
+400  401  402  410 : OR 411  412 : BL 420  421  422   
+Exception in thread "main" java.lang.NullPointerException
+	at Seeker.hasAdventurer(Seeker.java:22)
+	at Seeker.Move(Seeker.java:52)
+	at GameEngine.runGame(GameEngine.java:719)
+	at Main.main(Main.java:14)
+
+Process finished with exit code 1
